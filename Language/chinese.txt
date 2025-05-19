@@ -1,0 +1,13 @@
+[MAIN]
+COMMPORT=串口
+Connect=连接
+Disconnect=断开连接
+Connectstatus=串口连接状态
+statusConn=已连接
+statusDisconn=已经断开连接
+Brightness=亮度
+Layout=布局
+Space=空格
+Send=发送
+Exit=退出
+Language=语  言

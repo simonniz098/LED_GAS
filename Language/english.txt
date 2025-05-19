@@ -1,0 +1,13 @@
+[MAIN]
+COMMPORT=COMM PORT
+Connect=&Connect
+Disconnect=&Disconnect
+Connectstatus=Connect status
+statusConn=connected
+statusDisconn=disconnected
+Brightness=Brightness
+Layout=Layout
+Space=Space
+Send=&Send
+Exit=E&xit
+Language=Language

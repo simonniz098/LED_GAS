@@ -1,0 +1,227 @@
+[MAIN_MENU]
+FILE=Archivo
+EDIT=Edici車n
+SIMULATION=Simulaci車n
+COMMUNICATION=Comunicaci車n
+OPTION=Opci車n
+HELP=Ayuda
+ABOUT=Sobre
+
+SIMULATION_AREA=Simulaci車n de la zona
+ITEMEDITOR_AREA=芍rea de editor de elementos
+SYSTEM_STATUS_AREA=Sistema de 芍rea de estado
+ITEM_MESSAGE_AREA=芍rea de mensajes punto
+
+[FILE_ITEM]
+NEW=Nuevo
+OPEN=Abierta
+SAVE=Guardar
+SAVEAS=Guardar como
+Exit=Salida
+
+[EDIT_ITEM]
+APPEND=Anexar
+INSERT=Inserte
+MODIFY=Modificar
+COPY=Copia
+CUT=Corte
+PASTE=Pasta
+DELETE=Eliminar una
+CLEAR=Delete All eliminar todos los
+MOVEUP=Subir
+MOVEDOWN=Bajar
+
+[SIMULATION_ITEM]
+CUR_ITEM=Tema actual
+ALL_ITEM=Todo el art赤culo
+STOP_ALL=Detener todos los
+
+[COMMUNICATION_ITEM]
+SENDCURITEM=Enviar una
+SENDALLITEM=Enviar todos los
+STOPSEND=Dejar de enviar
+IMMEDIATETEXT=Texto inmediato
+
+[OPTION_ITEM]
+SETUP=Establecido
+TIMESETTING=Tiempo de fraguado
+UPLOADSYSTEMFONT=Carga de fuentes del sistema
+BRIGHTSETTING=Entorno luminoso
+INITIALSYSTEM=Inicial del sistema
+DEBUG=Depuraci車n
+DEBUG_CLS=CLS
+DEBUG_TEST=Prueba
+DEBUG_DOTALL=Todos los puntos
+DEBUG_POWERON=encendido
+DEBUG_POWEROFF=Apagar
+DEBUG_ADJUSTTIME=Ajustar el tiempo
+DEBUG_RESET=Sistema de reajuste
+CHOOSELANGUAGE=Seleccione su idioma
+
+[HELP_ITEM]
+ABOUT=Sobre
+
+;=====================================
+[ANIMATION_EDITOR]
+ANINAME=Nombre de animales
+SPEED=Velocidad
+STARTBUTTON=Iniciar la demostraci車n
+STOPBUTTON=Dejar de demostraci車n
+SAVEBUTTON=Guardar
+
+[PICTURE_EDITOR]
+ACTION=Acci車n
+SPEED=Velocidad
+DELAYTIME=Delaytime
+FILENAME=De nombre de archivo
+OPENBUTTON=Abierta
+STARTBUTTON=Iniciar la demostraci車n
+STOPBUTTON=Dejar de demostraci車n
+SAVEBUTTON=Guardar
+HEADLOGO=Cabeza de logotipo
+TAILLOGO=Logotipo de la cola
+
+[TEXT_EDITOR]
+FONTNAME=Nombre de fuente
+DELAYTIME=Tiempo de retardo
+ACTION=Acci車n
+SPEED=Velocidad
+HEADLOGO=Cabeza de logotipo
+TAILLOGO=Logotipo de la cola
+COLOR=Color
+STARTBUTTON=Iniciar la demostraci車n
+STOPBUTTON=Dejar de demostraci車n
+SAVEBUTTON=Guardar el punto
+FILENAME=De nombre de archivo
+OPENBUTTON=Abierta
+SAVETEXTBUTTON=Guardar el archivo
+
+[TEMP_EDITOR]
+FONTNAME=Nombre de fuente
+DELAYTIME=Tiempo de retardo
+HEADLOGO=Cabeza de logotipo
+TAILLOGO=Logotipo de la cola
+COLOR=Color
+STARTBUTTON=Iniciar la demostraci車n
+STOPBUTTON=Dejar de demostraci車n
+SAVEBUTTON=Guardar
+
+[TT_EDITOR]
+FONTNAME=Nombre de fuente
+DELAYTIME=Tiempo de retardo
+HEADLOGO=Cabeza de logotipo
+TAILLOGO=Logotipo de la cola
+COLOR=Color
+STARTBUTTON=Iniciar la demostraci車n
+STOPBUTTON=Dejar de demostraci車n
+SAVEBUTTON=Guardar
+
+;============SETUP,TIMESETTING,BRIGHTSETTING,IMMIDIATETEXT
+[SETUP]
+COMMTYPE=Tipo de comunicaci車n
+COMM1=Comunicaci車n en serie
+COMM2=Trabajo en red de comunicaci車n
+IP=Pantalla IP
+UDP=El puerto UDP
+
+COMPORT=Puerto com
+BAUDRATE=Tasa bauid
+TEMPMODEL=Modo de temperatura
+TEMPCORRECT=Correctting temperatura
+TTSIGNFLAG=Mostrar marca de signo de la temperatura
+TTEMPDELAYTIME=Ony TT y el tiempo de demora TEMP
+TTEMPFONTNAME=Ony TT y el nombre TEMP fuente
+TTEMPFONTCOLOR=Ony TT y el color de fuente TEMP
+SETBUTTON=Conjunto
+OKBUTTON=OK
+;//new interface 2006.6
+TITLE=Comunicaci車n en la
+TEMPTYPE1=Celsiur escala
+TEMPTYPE2=Escala Fahrenheit
+SCREEN_NO=Pantalla NO
+PROGRAM_INDEX=Programa de 赤ndice
+
+[TIME_SETTING]
+ChoiceTime=El tiempo de elecci車n
+OnOff=En/ Fuera
+WEEK_Mon=Lunes
+WEEK_Tues=Martes
+WEEK_Wed=Mi谷rcoles
+WEEK_Thurs=Jueves
+WEEK_Friday=Viernes
+WEEK_Sat=S芍bado
+WEEK_Sun=Domingo
+StartTime=Hora de inicio
+EndTime=Finaliza el
+Save=OK
+;//new interface 2006.6
+TITLE=Tiempo seting
+
+
+[BRIGHT_SETTING]
+BRIGHT=Brillo
+READ=Leer
+SET=Conjunto
+OK=OK
+;////New interface 2006.6
+TITLE=Ajuste de brillo
+BRIGHTNESS=Brillo
+
+[IMMIDIATE_TEXT]
+HeadLogo=Cabeza de logotipo
+TailLogo=Logotipo de la cola
+Font=Fuente
+Speed=Velocidad
+Time=Tiempo
+Color=Color
+FileName=De nombre de archivo
+Open=Abierta
+Save=Guardar
+Send=Enviar
+OK=OK
+;////New interface 2006.6
+TITLE=Mostrar texto immidiate
+
+;//New interface 2006.6
+[ABOUT]
+TITLE=Sobre
+TOPIC=Gerente de cruz
+VER=Ver
+REGISTERED=Registrados
+UNREGISTERED=No registrado
+COPYRIGHT=CopyRight (C) 2005-2006
+
+
+[CONTENT_TYPE]
+Animation=Animaci車n
+Picture=Imagen
+Text=Texto
+Temperature=Temperatura
+SysTime=Sistema de tiempo
+
+[ACTION_TYPE]
+0=0-al azar
+1=1- ninguno
+2=2- subir
+3=3-mover hacia la izquierda
+4=4- se desvanecen
+5=5-hacer subir
+6=6-Empujar a la izquierda
+7=7-en torno a ampliar
+8=8-bajar
+9=9-mover hacia la derecha
+10=10-empuje hacia abajo
+11=11-empujarlo
+12=12-horizonte de obturaci車n
+13=13-vertical del obturador
+14=14- ventilador ampliar
+15=15-diamante ampliar
+
+[COLOR_TYPE]
+RED=Rojo
+GREEN=Verde 
+BLUE=Azul
+YELLOW=Amarillo
+MAGENTA=Magenta
+CYAN=Cian
+WHITE=Blanco

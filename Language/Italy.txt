@@ -1,0 +1,229 @@
+[MAIN_MENU]
+FILE=File
+EDIT=Modifica
+SIMULATION=Simulazione
+COMMUNICATION=Comunicazione
+OPTION=Opzione
+HELP=Aiuto
+ABOUT=Circa
+
+SIMULATION_AREA=Simulazione area
+ITEMEDITOR_AREA=Editor area voce
+SYSTEM_STATUS_AREA=Stato del sistema area
+ITEM_MESSAGE_AREA=Messaggio di area voce
+
+[FILE_ITEM]
+NEW=Nuovo
+OPEN=Aperto
+SAVE=Salvare
+SAVEAS=Salva con nome
+Exit=Uscita
+
+[EDIT_ITEM]
+APPEND=Aggiungere
+INSERT=Inserire
+MODIFY=Modificare
+COPY=Copia
+CUT=Taglio
+PASTE=Pasta
+DELETE=Eliminare uno
+CLEAR=Eliminare tutte le
+MOVEUP=Spostarsi verso l'alto
+MOVEDOWN=Spostare verso il basso
+
+[SIMULATION_ITEM]
+CUR_ITEM=Luogo in cui si cur
+ALL_ITEM=Tutti gli articoli
+STOP_ALL=Arrestare tutti i
+
+[COMMUNICATION_ITEM]
+SENDCURITEM=Inviare uno
+SENDALLITEM=Inviare tutte le
+STOPSEND=Stop inviare
+IMMEDIATETEXT=Testo immediato
+
+[OPTION_ITEM]
+SETUP=Istituito
+TIMESETTING=Tempo di presa
+UPLOADSYSTEMFONT=Carica il font di sistema
+BRIGHTSETTING=Ambiente luminoso
+INITIALSYSTEM=Iniziale del sistema
+DEBUG=Debug
+DEBUG_CLS=CLS
+DEBUG_TEST=Prova
+DEBUG_DOTALL=Dot tutti
+DEBUG_POWERON=Alimentazione
+DEBUG_POWEROFF=Spegnimento
+DEBUG_ADJUSTTIME=Regolare il tempo
+DEBUG_RESET=Sistema di reset
+CHOOSELANGUAGE=Scegli la lingua
+
+[HELP_ITEM]
+ABOUT=Circa
+
+;=====================================
+[ANIMATION_EDITOR]
+ANINAME=Nome ani
+SPEED=Velocit¨¤
+STARTBUTTON=Avviare la demo
+STOPBUTTON=Stop demo
+SAVEBUTTON=Salvare
+
+[PICTURE_EDITOR]
+ACTION=Azione
+SPEED=Velocit¨¤
+DELAYTIME=Delya tempo
+FILENAME=Nome del file
+OPENBUTTON=Aperto
+STARTBUTTON=Avviare la demo
+STOPBUTTON=Stop demo
+SAVEBUTTON=Salvare
+HEADLOGO=Testa logo
+TAILLOGO=Logo coda
+
+[TEXT_EDITOR]
+FONTNAME=Font nome
+DELAYTIME=Delya tempo
+ACTION=Azione
+SPEED=Velocit¨¤
+HEADLOGO=Testa logo
+TAILLOGO=Logo coda
+COLOR=Colore
+STARTBUTTON=Avviare la demo
+STOPBUTTON=Stop demo
+SAVEBUTTON=Salvare voce
+FILENAME=Nome del file
+OPENBUTTON=Aperto
+SAVETEXTBUTTON=File di salvataggio
+
+[TEMP_EDITOR]
+FONTNAME=Font nome
+DELAYTIME=Delya tempo
+HEADLOGO=Testa logo
+TAILLOGO=Logo coda
+COLOR=Colore
+STARTBUTTON=Avviare la demo
+STOPBUTTON=Stop demo
+SAVEBUTTON=Salvare
+
+[TT_EDITOR]
+FONTNAME=Font nome
+DELAYTIME=Delya tempo
+HEADLOGO=Testa logo
+TAILLOGO=Logo coda
+COLOR=Colore
+STARTBUTTON=Avviare la demo
+STOPBUTTON=Stop demo
+SAVEBUTTON=Salvare
+
+;============SETUP,TIMESETTING,BRIGHTSETTING,IMMIDIATETEXT
+[SETUP]
+COMMTYPE=Tipo di comunicazione
+COMM1=Comunicazione seriale
+COMM2=Attivit¨¤ di comunicazione netto
+IP=Schermata IP
+UDP=Porta UDP
+
+COMPORT=Com porta
+BAUDRATE=Tasso bauid
+TEMPMODEL=Modalit¨¤ di temperatura
+TEMPCORRECT=Correctting temperatura
+TTSIGNFLAG=Mostra marchio segno per la temperatura
+TTEMPDELAYTIME=Solo TT e tempo di ritardo TEMP
+TTEMPFONTNAME=Solo TT e nome del font TEMP
+TTEMPFONTCOLOR=Solo TT e colore del carattere TEMP
+SETBUTTON=Set
+OKBUTTON=OK
+;//new interface 2006.6
+TITLE=Comminication impostazione
+TEMPTYPE1=Celsiur scala
+TEMPTYPE2=Scala Fahrenheit
+SCREEN_NO=Schermo No
+PROGRAM_INDEX=Indice di programma
+
+[TIME_SETTING]
+ChoiceTime=Tempo di scelta
+OnOff=Su / off 
+WEEK_Mon=Lunedi
+WEEK_Tues=Marted¨¬
+WEEK_Wed=Mercoled¨¬
+WEEK_Thurs=Giovedi
+WEEK_Friday=Venerd¨¬
+WEEK_Sat=Sabato
+WEEK_Sun=Domenica
+StartTime=Tempo di partenza
+EndTime=Ora di fine
+Save=OK
+;//new interface 2006.6
+TITLE=Tempo di presa
+
+
+[BRIGHT_SETTING]
+BRIGHT=Lluminosit¨¤
+READ=Leggere
+SET=Set
+OK=OK
+
+;////New interface 2006.6
+TITLE=Impostazione di luminosit¨¤
+BRIGHTNESS=Luminosit¨¤
+
+
+[IMMIDIATE_TEXT]
+HeadLogo=Testa logo
+TailLogo=Logo coda
+Font=Font
+Speed=Velocit¨¤
+Time=Tempo
+Color=Colore
+FileName=Nome del file
+Open=Aperto
+Save=Salvare
+Send=Inviare
+OK=OK
+;////New interface 2006.6
+TITLE=Visualizzazione del testo immidiate
+
+;//New interface 2006.6
+[ABOUT]
+TITLE=Circa
+TOPIC=Manager croce
+VER=Ver
+REGISTERED=Rregistrati
+UNREGISTERED=Non registrati
+COPYRIGHT=CopyRight (C) 2005-2006
+
+
+[CONTENT_TYPE]
+Animation=Animazione
+Picture=Foto
+Text=Testo
+Temperature=Temperatura
+SysTime=Ora di sistema
+
+[ACTION_TYPE]
+0=0-casuale
+1=1-nessuno   
+2= 2-spostarsi verso l'alto  
+3=3-spostarsi a sinistra
+4=4-dissolvenza   
+5=5-push up
+6=6-spinta a sinistra
+7=7-in giro per espansione
+8=8-spostare verso il basso
+9=9-sposta a destra
+10=10- spingere verso il basso
+11=11-spinta a destra
+12=12-orizzonte di scatto
+13=13-otturatore vertivcal
+14=14-ventilatore espansione
+15=15-diamante espandere
+
+[COLOR_TYPE]
+RED=Rosso
+GREEN=Verde
+BLUE=Blu
+YELLOW=Giallo
+MAGENTA=Magenta
+CYAN=Ciano
+WHITE=Bianco

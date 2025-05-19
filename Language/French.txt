@@ -1,0 +1,230 @@
+[MAIN_MENU]
+FILE=Fichier
+EDIT=Modifier
+SIMULATION=Simulation
+COMMUNICATION=Communication
+OPTION=Option
+HELP=Aide
+ABOUT=A propos
+
+SIMULATION_AREA=Simulation Zone
+ITEMEDITOR_AREA=Zone de l'¨¦diteur Iten
+SYSTEM_STATUS_AREA=Zone d'¨¦tat syst¨¨me
+ITEM_MESSAGE_AREA=Zone de message ¨¦l¨¦ment
+
+[FILE_ITEM]
+NEW=Nouveau
+OPEN=Ouverte
+SAVE=Enregistrer
+SAVEAS=Enregistrer sous
+Exit=sortie
+
+[EDIT_ITEM]
+APPEND=Ajouter
+INSERT=Ins¨¦rer
+MODIFY=Modifier
+COPY=Copier
+CUT=Couper
+PASTE=Coller
+DELETE=Supprimer un
+CLEAR=Supprimer tous les
+MOVEUP=D¨¦placer vers le haut
+MOVEDOWN=descendre
+
+[SIMULATION_ITEM]
+CUR_ITEM=Point Cur
+ALL_ITEM=Tous les articles
+STOP_ALL=Tout arr¨ºter
+
+[COMMUNICATION_ITEM]
+SENDCURITEM=Envoyer un
+SENDALLITEM=Envoyer Toutes
+STOPSEND=Arr¨ºter l'envoi
+IMMEDIATETEXT=Imm¨¦diate du texte...
+ 
+[OPTION_ITEM]
+SETUP=Le programme d'installation ...
+TIMESETTING=R¨¦glage de l'heure ...
+UPLOADSYSTEMFONT=Envoyer polices syst¨¨me
+BRIGHTSETTING=Cadre lumineux ...
+INITIALSYSTEM=Initiale du syst¨¨me
+DEBUG=D¨¦bogage
+DEBUG_CLS=Cls
+DEBUG_TEST=Test 
+DEBUG_DOTALL=Dotall
+DEBUG_POWERON=Marche
+DEBUG_POWEROFF=¨¦teignez
+DEBUG_ADJUSTTIME=r¨¦gler le temps
+DEBUG_RESET=r¨¦initialisation du syst¨¨me
+CHOOSELANGUAGE=choisir la langue
+
+[HELP_ITEM]
+ABOUT=Sur
+
+;=====================================
+[ANIMATION_EDITOR]
+ANINAME=Pas de nom
+SPEED=Vitesse
+STARTBUTTON=D¨¦marrer l'essai
+STOPBUTTON=Arr¨ºter la d¨¦mo
+SAVEBUTTON=Enregistrer
+
+[PICTURE_EDITOR]
+ACTION=Action
+SPEED=Vitesse
+DELAYTIME=Temps de retard
+FILENAME=Nom de fichier
+OPENBUTTON=Ouverte
+STARTBUTTON=D¨¦marrer l'essai
+STOPBUTTON=Arr¨ºter la d¨¦mo
+SAVEBUTTON=Enregistrer
+HEADLOGO=Logo t¨ºte
+TAILLOGO=Logo queue
+
+[TEXT_EDITOR]
+FONTNAME=Nom de la police
+DELAYTIME=Temps de retard
+ACTION=Action
+SPEED=Vitesse
+HEADLOGO=Logo t¨ºte
+TAILLOGO=Logo queue
+COLOR=Couleur
+STARTBUTTON=D¨¦marrer l'essai
+STOPBUTTON=Arr¨ºter la d¨¦mo
+SAVEBUTTON=Enregistrer ¨¦l¨¦ment
+FILENAME=Nom de fichier
+OPENBUTTON=Ouverte 
+SAVETEXTBUTTON=Fichier de sauvegarde
+
+[TEMP_EDITOR]
+FONTNAME=Nom de la police
+DELAYTIME=Temps de retard
+HEADLOGO=Logo t¨ºte
+TAILLOGO=Logo queue
+COLOR=Couleur
+STARTBUTTON=D¨¦marrer l'essai
+STOPBUTTON=Arr¨ºter la d¨¦mo
+SAVEBUTTON=Enregistrer
+
+[TT_EDITOR]
+FONTNAME=Nom de la police
+DELAYTIME=Temps de retard
+HEADLOGO=Logo t¨ºte
+TAILLOGO=Logo queue
+COLOR=Couleur
+STARTBUTTON=D¨¦marrer l'essai
+STOPBUTTON=Arr¨ºter la d¨¦mo
+SAVEBUTTON=Enregistrer
+
+;============SETUP,TIMESETTING,BRIGHTSETTING,IMMIDIATETEXT
+[SETUP]
+COMMTYPE=Type de communication
+COMM1=Communication s¨¦rie
+COMM2=Communication de travail net
+IP=¨¦cran IP
+UDP=Port UDP
+
+COMPORT=Port com
+BAUDRATE=Taux bauid
+TEMPMODEL=Mode de temp¨¦rature
+TEMPCORRECT=Bonne temp¨¦rature
+TTSIGNFLAG=Marque signe montrent pour la temp¨¦rature
+TTEMPDELAYTIME=Que TT et le d¨¦lai temp
+TTEMPFONTNAME=Que TT et nom de la police temp
+TTEMPFONTCOLOR=Que TT et la couleur de police temp
+SETBUTTON=Ensemble
+OKBUTTON=OK
+;//new interface 2006.6
+TITLE=Mise en communication
+TEMPTYPE1=Celsiur scale 
+TEMPTYPE2=¨¦chelle celsiur
+SCREEN_NO=¨¦cran
+PROGRAM_INDEX=Index du programme
+
+[TIME_SETTING]
+ChoiceTime=Temps de choix
+OnOff=Sur/off
+WEEK_Mon=Mois
+WEEK_Tues=Mardi
+WEEK_Wed=Mercredi
+WEEK_Thurs=Jeudi
+WEEK_Friday=Vendredi
+WEEK_Sat=Samedi
+WEEK_Sun=Dimanche 
+StartTime=l'heure de d¨¦but
+EndTime=Ech¨¦ance
+Save=OK
+;//new interface 2006.6
+TITLE=R¨¦glage de l'heure
+ 
+
+[BRIGHT_SETTING]
+BRIGHT=Luminosit¨¦
+READ=Lire
+SET=Ensemble
+OK=OK
+
+;////New interface 2006.6
+TITLE=R¨¦glage de la luminosit¨¦
+BRIGHTNESS=Luminosit¨¦
+
+[IMMIDIATE_TEXT]
+HeadLogo=Logo t¨ºte
+TailLogo=Logo queue
+Font=Police
+Speed=Vitesse
+Time=Temps
+Color=Couleur
+
+FileName=Nom de fichier
+
+Open=Ouverte
+Save=Eenregistrer
+Send=Envoyer
+OK=OK 
+;////New interface 2006.6
+TITLE=Afficher du texte immidiate
+
+;//New interface 2006.6
+[ABOUT]
+TITLE=Sur
+TOPIC=Manager transversal
+VER=Ver
+REGISTERED=Enregistr¨¦
+UNREGISTERED=Non enregistr¨¦es
+COPYRIGHT=Le droit d'auteur 2005-2006
+
+
+[CONTENT_TYPE]
+Animation=Animation
+Picture=Image
+Text=Texte
+Temperature=Temp¨¦rature
+SysTime=I'heure du syst¨¨me
+
+[ACTION_TYPE]
+0=0-al¨¦atoire
+1=1-none     
+2=2-d¨¦placer vers le haut  
+3=3-d¨¦placer vers la gauche
+4=4-fade   
+5=5-faire monter
+6=6-poussoir de gauche
+7=7-autour expansion
+8=8-descendre
+9=9-d¨¦placer vers la droite
+10=10-pousser vers le bas
+11=11-poussez vers la droite
+12=12-obturateur horizon
+13=13-obturateur vertivcal
+14=14-expansion de fans
+15=15-¨¦largir diamant
+
+[COLOR_TYPE]
+RED=Rouge
+GREEN=Vert
+BLUE=Bleu
+YELLOW=Jaune
+MAGENTA=Magenta
+CYAN=Cyan
+WHITE=Blanc
