@@ -29,9 +29,13 @@ LQFP: Package type (?)
 
 # Pinout
 
-Recommended pinout in the datasheet for UART1:
+    Recommend UART1 on [P3.6/RxD_2, P3.7/TxD_2] or [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1]
+Both suggestions point to wrong places.
 
-    Recommend UART1 on [P3.6/RxD_2, P3.7/TxD_2]or [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1]
 For [P3.6/RxD_2, P3.7/TxD_2], traces go to a missing RF component
+
+For [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1], traces go to a missing unidentified micro-controller.
+
+UART1 is likely on [P1.6/RxD_3/XTAL2,P1.7/TxD_3/XTAL1], as these traces go to a 74HC245D chip (![Datasheet here](https://www.mouser.com/datasheet/2/408/74HC245D_datasheet_en_20160804-959204.pdf)
 
 ![image](https://github.com/user-attachments/assets/720675a7-5331-4edf-b443-3f7f6da0af8e)
