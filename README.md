@@ -1,5 +1,7 @@
 # General Info
 
+Manufacturer info for C7-270: http://www.hidlyled.com/LED-Gas-Station-Sign-Remote-Controller-C7-270-p299.html
+
 Chip model: STC15W4K58S4 for web searches
 
 Actual chip soldered on the board: IAP15W4K58S4 - 30I - LQFP64L2 
@@ -38,4 +40,9 @@ For [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1], traces go to a missing unidentified mi
 
 UART1 is likely on [P1.6/RxD_3/XTAL2,P1.7/TxD_3/XTAL1], as these traces go to a 74HC245D chip (![Datasheet here](https://www.mouser.com/datasheet/2/408/74HC245D_datasheet_en_20160804-959204.pdf)
 
+UART3 is on [P0.0/RxD3,P0.1/TxD3]. Not used but pins are available on the board.
+
+UART4 is on [P0.2/RxD4,P0.3/TxD4]. Not used but pins are available on the board.
+
+SPI is on [P1.2/SS,P1.3/MOSI,P1.4/MISO,P1.5/SCLK]. Goes to U6, missing micro-controller.
 ![image](https://github.com/user-attachments/assets/720675a7-5331-4edf-b443-3f7f6da0af8e)
