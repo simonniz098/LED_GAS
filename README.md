@@ -1,4 +1,5 @@
-# LED_GAS
+# General Info
+
 Chip model: STC15W4K58S4 for web searches
 
 Actual chip soldered on the board: IAP15W4K58S4 - 30I - LQFP64L2 
@@ -26,7 +27,7 @@ LQFP: Package type (?)
 
 64: Number of pins
 
-#Pinout
+# Pinout
 
 Recommended pinout in the datasheet for UART1:
 
