@@ -46,3 +46,5 @@ UART4 is on [P0.2/RxD4,P0.3/TxD4]. Not used but pins are available on the board.
 
 SPI is on [P1.2/SS,P1.3/MOSI,P1.4/MISO,P1.5/SCLK]. Goes to U6, missing micro-controller.
 ![image](https://github.com/user-attachments/assets/720675a7-5331-4edf-b443-3f7f6da0af8e)
+
+J1 pin 1 is GND
