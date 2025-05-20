@@ -32,5 +32,6 @@ LQFP: Package type (?)
 Recommended pinout in the datasheet for UART1:
 
     Recommend UART1 on [P3.6/RxD_2, P3.7/TxD_2]or [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1]
+For [P3.6/RxD_2, P3.7/TxD_2], traces go to a missing RF component
 
 ![image](https://github.com/user-attachments/assets/720675a7-5331-4edf-b443-3f7f6da0af8e)
