@@ -1,7 +1,9 @@
 # LED_GAS
 Chip model: STC15W4K58S4 for web searches
+
 Actual chip soldered on the board: IAP15W4K58S4 - 30I - LQFP64L2 
-Datasheet: ![link](https://datasheet4u.com/pdf-down/S/T/C/STC15W4K32S4-STCMCU.pdf)
+
+: ![Datasheet](https://datasheet4u.com/pdf-down/S/T/C/STC15W4K32S4-STCMCU.pdf)
 
 ![image](https://github.com/user-attachments/assets/d476d903-ccb4-4b52-82f8-1387d125a998)
 IAP: The program Flash in user program area can be used as EEPROM
