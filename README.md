@@ -6,7 +6,7 @@ Chip model: STC15W4K58S4 for web searches
 
 Actual chip soldered on the board: IAP15W4K58S4 - 30I - LQFP64L2 
 
-![Datasheet](https://datasheet4u.com/pdf-down/S/T/C/STC15W4K32S4-STCMCU.pdf)
+[STC15W4K58S4 Datasheet](https://datasheet4u.com/pdf-down/S/T/C/STC15W4K32S4-STCMCU.pdf)
 
 ![image](https://github.com/user-attachments/assets/d476d903-ccb4-4b52-82f8-1387d125a998)
 IAP: The program Flash in user program area can be used as EEPROM
@@ -38,7 +38,7 @@ For [P3.6/RxD_2, P3.7/TxD_2], traces go to a missing RF component
 
 For [P1.6/RxD_3/XTAL2, P1.7/TxD_3/XTAL1], traces go to a missing unidentified micro-controller.
 
-UART1 is likely on [P1.6/RxD_3/XTAL2,P1.7/TxD_3/XTAL1], as these traces go to a 74HC245D chip (![Datasheet here](https://www.mouser.com/datasheet/2/408/74HC245D_datasheet_en_20160804-959204.pdf)
+UART1 is likely on [P1.6/RxD_3/XTAL2,P1.7/TxD_3/XTAL1], as these traces go to a SM74HC245D chip [SM74HC245D Datasheet](https://www.mouser.com/datasheet/2/408/74HC245D_datasheet_en_20160804-959204.pdf)
 
 UART3 is on [P0.0/RxD3,P0.1/TxD3]. Not used but pins are available on the board.
 
