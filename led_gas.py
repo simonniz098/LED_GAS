@@ -2,8 +2,12 @@
 
 import RPi.GPIO as gpio
 from time import sleep
-from random import randint
 from sys import exit
+
+#Portion pour importer les donnees de race monitor
+from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
+
 
 #Doc sur learn.sparkfun.com/tutorials/raspberry-gpio/python-rpigpio-api
 #Pour info sur les pinouts, la commande "pinout" existe.
@@ -129,8 +133,39 @@ def read_input():
     gpio.cleanup()
     exit(0)
   
+#Lire le raceId pour aller poker l'API apres
+def read_raceId():
+  while True:
+    try:
+      raceId = int(input("Entrer le ID de la course (123456): "))
+      if len(str(raceId) != 6):
+        raise ValueError
+      print("ID fourni: {}".format(raceId))
+      return raceId
+    except ValueError:
+      print("ERREUR: Mauvais format de ID. Entrer 6 chiffres")
+  
+#Lancer un firefox pour parler a l'API race monitor.
+#Requiert gheckodriver https://github.com/mozilla/geckodriver/releases/tag/v0.36.0 dans le path system
+#Requiert headless sinon crash parce que pas d'env graphique
+def init_selenium():
+  opts = FirefoxOptions()
+  opts.add_argument("--headless")
+  browser = webdriver.Firefox(options=opts)
+  return browser
 
+def read_api(browser,raceId):
+  url="https://api.race-monitor.com/Timing/?raceid={}".format(raceId)
+  browser.get(url)
+  timingHeader = driver.find_element(by=webdriver.common.by.By.CLASS_NAME, value="timingHeader")
+  print(timingHeader)
+  sleep(5)
+  
+  
 ######### MAIN #########
+browser = init_selenium()
+raceId = read_raceId()
+
 gpio.setmode(gpio.BOARD) #Utiliser les pins numbers comme sur commande pinout
 
 #Pour pin Output Enable, low pour affichage, high pour eteindre
@@ -162,16 +197,17 @@ while True:
     
 while True:
   try: 
-    chars = read_input()
-    index = 0
-    for char in chars:
-      #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
-      if char not in [".",","]:
-        bits = CHAR_MAP[char]
-        if index < len(chars) - 2 and chars[index + 1] in [".",","]:
-          bits = bits | CHAR_MAP[chars[index + 1]]
-        send(bits)
-      index = index + 1
+#    chars = read_input()
+    read_api(browser,raceId)
+#    index = 0
+#    for char in chars:
+#      #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
+#      if char not in [".",","]:
+#        bits = CHAR_MAP[char]
+#        if index < len(chars) - 2 and chars[index + 1] in [".",","]:
+#          bits = bits | CHAR_MAP[chars[index + 1]]
+#        send(bits)
+#      index = index + 1
   except KeyboardInterrupt:
     reset_panneau()
     break
