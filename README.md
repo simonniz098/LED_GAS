@@ -20,29 +20,20 @@ Go to the following link (and change the race id) to reach a page with live timi
 https://api.race-monitor.com/Timing/?raceid=155629
 
 ### Selenium setup
-Make sure you are running python 3.8 and above.
+Make sure you are running python 3.
 
-#### How to install Python 3.9
-Edit /etc/apt/sources.list:
 
-$ sudo nano /etc/apt/sources.list
-
-Then add the following line to the bottom of the file and save it:
-
-deb http://http.us.debian.org/debian/ testing non-free contrib main
-
-Now, to install Python 3.9, run:
-
-$ sudo apt update
-$ sudo apt install -y python3.9
-
-Now you should start seeing a Python 3.9 version installed:
-
-$ python3 --version
-Python 3.9.9
 
 ```python
 pip3 install selenium
+```
+Once installed, you need to modify /home/pi/.local/lib/python3.7/site-packages/selenium/webdriver/common/selenium_manager.py
+
+There is a line that uses walrus (:=) instead of declaring the path variable above.
+```python
+#New code should look like this:
+path = os.enviro.......
+if path is not None:
 ```
 Now, install firefox-esr.
 ```shell
