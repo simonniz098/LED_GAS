@@ -20,7 +20,7 @@ Go to the following link (and change the race id) to reach a page with live timi
 https://api.race-monitor.com/Timing/?raceid=155629
 
 ### Selenium setup
-Make sure you are running python 3.
+Make sure you are running python 3. 
 
 
 
