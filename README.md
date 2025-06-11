@@ -8,9 +8,7 @@ LED Panel model:  [GAS12Z8888 by Hidly](https://www.hidlystore.com/index.php?rou
 
 # Software
 ## Python script
-The script must run on a Raspberry Pi, as it uses RPi.GPIO. Selenium is also used to query the Race-Monitor API, and Selenium cannot run on Micro-Python. It requires a full OS, which is not possible on smaller MCUs like Arduinos or ESP32.
-
-### Initial Raspberry Pi setup
+The script must run on a Raspberry Pi model 3 and above, as it uses RPi.GPIO. Selenium is also used to query the Race-Monitor API, and Selenium cannot run on Micro-Python. It requires a full OS, which is not possible on smaller MCUs like Arduinos or ESP32.
 
 ### Race monitor data
 Live races can be browsed at this link: https://www.race-monitor.com/Live 
@@ -19,75 +17,33 @@ https://www.race-monitor.com/Live/Race/155629 , grab 155629.
 Go to the following link (and change the race id) to reach a page with live timing and minimal useless data:
 https://api.race-monitor.com/Timing/?raceid=155629
 
+### Initial Raspberry Pi setup
+
+#### Wi-fi connection ####
+
+Use Network Manager to connect to a wifi network. Make sure machine is fully up-to-date, otherwise wifi could be broken.
+```shell
+#Scan wifi networks
+nmcli device wifi list
+#Connect
+nmcli device wifi connect $SSID password $PASSWORD
+```
+
+#### Chromedriver installation ####
+```shell
+apt-get install chromium-driver
+```
+
 ### Selenium setup
+
 Make sure you are running python 3. 
 
-
+Create a python venv, as python packages are managed externally.
 
 ```python
 pip3 install selenium
 ```
-Once installed, you need to modify /home/pi/.local/lib/python3.7/site-packages/selenium/webdriver/common/selenium_manager.py
 
-There is a line that uses walrus (:=) instead of declaring the path variable above.
-```python
-#New code should look like this:
-path = os.enviro.......
-if path is not None:
-```
-Now, install firefox-esr.
-```shell
-sudo apt-get install firefox-esr
-```
-Next, get geckodriver from [Mozilla's github repo](https://github.com/mozilla/geckodriver/releases/). Unzip and unarchive the file, and drop it in a bin directory contained in your $PATH (/usr/local/bin should do). Don't forget to chmod +x geckodriver.
-Test geckodriver by launching the executable, it should start listening and wait. If that works, you are good to go.
-
-
-#### For old Raspberry Pis with an armv6l HF  and soon ARMv7 HF CPU
-Check your cpu architecture with ```uname -a```. If you have an old ARM CPU, you must compile geckodriver manually.
-For other instructions, you can check AMD.md in [this release of geckodriver](https://github.com/mozilla/geckodriver/releases/tag/v0.36.0)
-Install rust on your pi:
-```shell
-
-% curl https://sh.rustup.rs -sSf | sh
-
-```
-2. Install cross-compiler toolchain:
-```shell
-
-% apt install gcc-arm-linux-gnueabihf libc6-armhf-cross libc6-dev-armhf-cross
-
-```
-3. Create a new shell, or to reuse the existing shell:
-
-```shell
-
-% source $HOME/.cargo/env
-
-```
-4. Install rustc target toolchain:
-```shell 
-rustup target install arm-unknown-linux-gnueabihf #for ARMv6L
-rustup target install armv7-unknown-linux-gnueabihf
-```
-5. Put this in .cargo/config.toml:
-For ARMv7 
-```toml 
-[target.armv7-unknown-linux-gnueabihf]
-linker = "arm-linux-gnueabihf-gcc"
-```
-For ARMv6L
-```toml
-[target.arm-unknown-linux-gnueabihf]
-linker = "arm-linux-gnueabihf-gcc"
-rustflags = "-C panic=abort"
-```
-You can finally try to compile geckodriver.
-```shell
-cd geckodriver
-cargo build --release
-```
-Now wait for 2-3 hours.
 ## Original software
 The software provided by Hidly can only work with a properly equipped C7-270 board, which does not seem to be the case with most of them. They can be reached to buy a different board if you explain your needs by mail. It connects to a COM port and sends a series of bytes to the MCU on the C7-270 board. Since a naked C7-270 board lacks any RS232/422 pinout **AND** the required chips, there is no way to actually talk to the board with this software.
 

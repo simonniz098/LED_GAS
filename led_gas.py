@@ -115,23 +115,23 @@ def reset_panneau():
     send(bits)
 
 #Valide l'input pour que ce soit affiche normalement
-def read_input():
-  try:
-    bad_char = True
-    while bad_char:
-      chars = input("Entrer caracteres: ")
-      chars = chars.upper().rstrip()
-      bad_char = False
-      for char in chars:
-        if char not in CHAR_MAP.keys():
-          print("Caractere invalide, recommencer avec lettre et chiffres et . seulement (pas de M, K, V, X)")
-          bad_char = True
-    #Le panneau affiche l'input a l'envers
-    return chars
-  except KeyboardInterrupt:
-    reset_panneau()
-    gpio.cleanup()
-    exit(0)
+#def read_input():
+#  try:
+#    bad_char = True
+#    while bad_char:
+#      chars = input("Entrer caracteres: ")
+#      chars = chars.upper().rstrip()
+#      bad_char = False
+#      for char in chars:
+#        if char not in CHAR_MAP.keys():
+#          print("Caractere invalide, recommencer avec lettre et chiffres et . seulement (pas de M, K, V, X)")
+#          bad_char = True
+#    #Le panneau affiche l'input a l'envers
+#    return chars
+#  except KeyboardInterrupt:
+#    reset_panneau()
+#    gpio.cleanup()
+#    exit(0)
   
 #Lire le raceId pour aller poker l'API apres
 def read_raceId():
@@ -145,13 +145,8 @@ def read_raceId():
     except ValueError:
       print("ERREUR: Mauvais format de ID. Entrer 6 chiffres")
   
-#Lancer un firefox pour parler a l'API race monitor.
-#Requiert gheckodriver https://github.com/mozilla/geckodriver/releases/tag/v0.36.0 dans le path system
 #Requiert headless sinon crash parce que pas d'env graphique
 def init_selenium():
-#  opts = FirefoxOptions()
-#  opts.add_argument("--headless")
-#  browser = webdriver.Firefox(options=opts)
   serv = Service(executable_path="/usr/bin/chromedriver")
   opts = webdriver.ChromeOptions()
   opts.add_argument("--headless")
@@ -159,9 +154,30 @@ def init_selenium():
   return browser
 
 def read_api(browser):
-  #browser.get(url)
-  timingHeader = browser.find_element(by=By.CLASS_NAME, value="timingHeader")
+  print("Read displayContainer")
+  displayContainer = browser.find_elements(by=By.ByChained, value="displayContainer")
+  print("Read timingHeader")
+  for div in displayContainer:
+    print(div)
+  timingHeader = displayContainer.find_element(by=By.CLASS_NAME, value="timingHeader")
+  print("Read timingHeaderElems")
+  timingHeaderElems = timingHeader.find_elements(by=By.TAG_NAME, value='div')
   print(timingHeader.text)
+  #Trouver le nombre de laps
+  race_info = {
+    "laps": find_lap(timingHeaderElems),
+    "positions": find_positions()
+  }
+  print("Laps: {}".format(race_info["laps"]))
+
+
+def find_lap(timingHeaderElems):
+  lap_idx = 0
+  for index,elem in enumerate(timingHeaderElems):
+    if elem.text == "Laps to go:":
+      lap_idx = index + 1
+      break
+  return timingHeaderElems[lap_idx].text
   
   
 ######### MAIN #########
@@ -178,15 +194,15 @@ while True:
     print("ERREUR: Entrer seulement un chiffre de 1 a 8") 
 
 print("Configuration du GPIO")
-gpio.setmode(gpio.BOARD) #Utiliser les pins numbers comme sur commande pinout
+gpio.setmode(gpio.BCM)
 
 #Pour pin Output Enable, low pour affichage, high pour eteindre
-OUTPUT_ENABLE = 26
+OUTPUT_ENABLE = 15
 gpio.setup(OUTPUT_ENABLE, gpio.OUT)
 
 CLOCK = 24
 #Frequence pour clock, 5khz
-FREQUENCY_HZ = 5000 
+FREQUENCY_HZ = 5000
 PERIOD = 1.0 / FREQUENCY_HZ # Periode en secondes
 HALF_PERIOD = PERIOD / 2 # Demi-periode pour high et low
 gpio.setup(CLOCK, gpio.OUT)
@@ -196,25 +212,26 @@ LATCH = 23
 gpio.setup(LATCH, gpio.OUT)
 
 #Serial Data In, ce qui envoie les bits au driver LED
-SDI = 22
+SDI = 25
 gpio.setup(SDI, gpio.OUT)
 
     
-print("Connection a {}".format(url))
+print("Connecting to {}".format(url))
 browser.get(url)
 while True:
   try: 
-#    chars = read_input()
+#    chars = "ASDF"
     read_api(browser)
-#    index = 0
-#    for char in chars:
-#      #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
-#      if char not in [".",","]:
-#        bits = CHAR_MAP[char]
-#        if index < len(chars) - 2 and chars[index + 1] in [".",","]:
-#          bits = bits | CHAR_MAP[chars[index + 1]]
-#        send(bits)
-#      index = index + 1
+    index = 0
+    for char in chars:
+      #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
+      if char not in [".",","]:
+        bits = CHAR_MAP[char]
+        if index < len(chars) - 2 and chars[index + 1] in [".",","]:
+          bits = bits | CHAR_MAP[chars[index + 1]]
+        send(bits)
+      index = index + 1
+    sleep(1)
   except KeyboardInterrupt:
     reset_panneau()
     break
