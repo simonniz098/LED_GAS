@@ -2,6 +2,7 @@
 
 import RPi.GPIO as gpio
 from time import sleep
+from datetime import datetime
 from sys import exit
 
 #Portion pour importer les donnees de race monitor
@@ -67,16 +68,19 @@ CHAR_MAP = {
     'Y': pB | pC | pD | pF | pG,
     'Z': pA | pB | pD | pE | pG,
     '.': pDP,
-    ',': pDP
+    ',': pDP,
+    ' ': 0,
 }
 
-
-#Fonction d'envoi au panneau
-def send(bits):
-  #On doit utiliser le "rising edge" du clock pour la transmission de donnees
+#Fonction pour preparer le panneau a recevoir des donnees
+#Eteint le panneau
+def init_send():
   #Latch low pour envoi de donnees
   gpio.output(LATCH, gpio.LOW)
   gpio.output(OUTPUT_ENABLE, gpio.HIGH)
+
+#Fonction d'envoi au panneau
+def send(bits):
     
   #Loop sur chacun des OUT du LED Driver 
   num_bits = 63
@@ -89,6 +93,7 @@ def send(bits):
     gpio.output(CLOCK, gpio.LOW)
     sleep(HALF_PERIOD)
 
+    #On doit utiliser le "rising edge" du clock pour la transmission de donnees
     #Mettre le clock a high pour que le LED driver lise SDI
     gpio.output(CLOCK, gpio.HIGH)
     sleep(HALF_PERIOD)
@@ -98,10 +103,13 @@ def send(bits):
     #Seulement requis pour affichag de debug
     num_bits = num_bits - 1
   
+#Fonction pour commencer a afficher le panneau apres l'envoi de donnees
+def finish_send():
   #Fin de l'envoi
   gpio.output(SDI, gpio.LOW)
   #Latch HIGH pour dire qu'on a fini l'envoi
   gpio.output(LATCH, gpio.HIGH)
+  #Allumer le panneau
   gpio.output(OUTPUT_ENABLE, gpio.LOW)
   sleep(HALF_PERIOD)
   gpio.output(LATCH, gpio.LOW)
@@ -110,29 +118,12 @@ def send(bits):
 #Pour vider un board. nb_digit est une variable globale
 def reset_panneau():
   print("Reset du panneau")
+  init_send()
   for i in range(nb_digit):
     bits = int(0)
     send(bits)
+  finish_send()
 
-#Valide l'input pour que ce soit affiche normalement
-#def read_input():
-#  try:
-#    bad_char = True
-#    while bad_char:
-#      chars = input("Entrer caracteres: ")
-#      chars = chars.upper().rstrip()
-#      bad_char = False
-#      for char in chars:
-#        if char not in CHAR_MAP.keys():
-#          print("Caractere invalide, recommencer avec lettre et chiffres et . seulement (pas de M, K, V, X)")
-#          bad_char = True
-#    #Le panneau affiche l'input a l'envers
-#    return chars
-#  except KeyboardInterrupt:
-#    reset_panneau()
-#    gpio.cleanup()
-#    exit(0)
-  
 #Lire le raceId pour aller poker l'API apres
 def read_raceId():
   while True:
@@ -154,22 +145,20 @@ def init_selenium():
   return browser
 
 def read_api(browser):
-  print("Read displayContainer")
-  displayContainer = browser.find_elements(by=By.ByChained, value="displayContainer")
-  print("Read timingHeader")
-  for div in displayContainer:
-    print(div)
+  displayContainers = browser.find_elements(by=By.CLASS_NAME, value="displayContainer")
+  for dis in displayContainers:
+      if dis.is_displayed():
+          displayContainer = dis
+          break
   timingHeader = displayContainer.find_element(by=By.CLASS_NAME, value="timingHeader")
-  print("Read timingHeaderElems")
   timingHeaderElems = timingHeader.find_elements(by=By.TAG_NAME, value='div')
-  print(timingHeader.text)
+  racers= displayContainer.find_elements(by=By.CLASS_NAME, value="racerName")
   #Trouver le nombre de laps
-  race_info = {
-    "laps": find_lap(timingHeaderElems),
-    "positions": find_positions()
-  }
-  print("Laps: {}".format(race_info["laps"]))
-
+  race_info = []
+  race_info.append(find_lap(timingHeaderElems))
+  race_info.extend(find_positions(racers))
+  print("Race info: {}".format(race_info))
+  return race_info
 
 def find_lap(timingHeaderElems):
   lap_idx = 0
@@ -177,23 +166,44 @@ def find_lap(timingHeaderElems):
     if elem.text == "Laps to go:":
       lap_idx = index + 1
       break
-  return timingHeaderElems[lap_idx].text
+  #ljust pour afficher les tours a gauche du panneau"
+  return timingHeaderElems[lap_idx].text.ljust(4)
   
-  
+def find_positions(racers):
+  positions=[]
+  for position,racer in enumerate(racers):
+    #On veut pas plus que 5 positions dans liste
+    if len(positions) == 5:
+        break
+    #Pour eviter les lignes "Waiting for info"
+    if racer.text.startswith("#"):
+      #Mettre la position, index + 1
+      #Garder le numero du pilote
+      #  Retirer le #
+      #  Remplir d'espaces a gauche pour pas decaler l'affichage des autres panneaux
+      #  On inscrit seulement 3 caracteres pour pouvoir afficher la position sur le panneau. ex: 1. 88
+      pos_chars = str(position + 1) + "." + racer.text.split(" ")[0].strip("#").rjust(3," ").upper()[0:3]
+      #Enlever les caracteres invalides
+      for idx,char in enumerate(pos_chars):
+        if char not in CHAR_MAP.keys():
+          pos_chars.replace(char," ")
+      positions.append(pos_chars)
+  #S'assurer qu'on a 5 entrees de positions, et quand y'a rien on affiche un panneau vide
+  while len(positions) < 5:
+    positions.append("    ")
+  return positions
+
 ######### MAIN #########
 browser = init_selenium()
 raceId = read_raceId()
 url="https://api.race-monitor.com/Timing/?raceid={}".format(raceId)
 
-while True:
-  try:
-    #4 digit par panneau
-    nb_digit = int(input("Combien de panneaux sont connectes au controlleur? ")) * 4
-    break
-  except ValueError:
-    print("ERREUR: Entrer seulement un chiffre de 1 a 8") 
+#4 digit par panneau de gaz * 6 panneaux = 24
+nb_digit = 24
 
 print("Configuration du GPIO")
+#Enleve des erreurs si on control+c le script
+gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 
 #Pour pin Output Enable, low pour affichage, high pour eteindre
@@ -218,22 +228,28 @@ gpio.setup(SDI, gpio.OUT)
     
 print("Connecting to {}".format(url))
 browser.get(url)
+old_race_info = []
 while True:
   try: 
-#    chars = "ASDF"
-    read_api(browser)
-    index = 0
-    for char in chars:
-      #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
-      if char not in [".",","]:
-        bits = CHAR_MAP[char]
-        if index < len(chars) - 2 and chars[index + 1] in [".",","]:
-          bits = bits | CHAR_MAP[chars[index + 1]]
-        send(bits)
-      index = index + 1
-    sleep(1)
+    race_info = read_api(browser)
+    if old_race_info != race_info:
+      init_send()
+      for pane in race_info:
+        index = 0
+        for char in pane:
+          #Pour afficher le point sans gaspiller un digit on check si on peut le mettre avec le caractere d'avant
+          if char not in [".",","]:
+            bits = CHAR_MAP[char]
+            if index < len(pane) - 2 and pane[index + 1] in [".",","]:
+              bits = bits | CHAR_MAP[pane[index + 1]]
+            send(bits)
+          index = index + 1
+      finish_send()
+      sleep(1)
+    else:
+      print("{}: Pas de nouvelle info a afficher".format(datetime.now()))
+    old_race_info = race_info
   except KeyboardInterrupt:
     reset_panneau()
     break
 
-gpio.cleanup()
