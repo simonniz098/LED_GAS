@@ -226,6 +226,9 @@ SDI = 25
 gpio.setup(SDI, gpio.OUT)
 
     
+#Le panneau le plus proche du controlleur recoit la derniere info envoyee.
+#Donc avec 6 panneaux, le lap est sur le board le plus loin et P5 est sur 
+#le panneau branche direct sur le pi
 print("Connecting to {}".format(url))
 browser.get(url)
 old_race_info = []

@@ -10,6 +10,9 @@ LED Panel model:  [GAS12Z8888 by Hidly](https://www.hidlystore.com/index.php?rou
 ## Python script
 The script must run on a Raspberry Pi model 3 and above, as it uses RPi.GPIO. Selenium is also used to query the Race-Monitor API, and Selenium cannot run on Micro-Python. It requires a full OS, which is not possible on smaller MCUs like Arduinos or ESP32.
 
+### Launching the script
+as the pi user, run ./led_gas.sh which loads the pyvenv and starts the script.
+
 ### Race monitor data
 Live races can be browsed at this link: https://www.race-monitor.com/Live 
 From the link above, choose a race and grab the race id from the URL. For example:
